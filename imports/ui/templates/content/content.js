@@ -1,1 +1,3 @@
-import './dashboardContent.html'
+import './dashboardContent.html';
+
+import './dashboardContentEvents.js';

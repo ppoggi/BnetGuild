@@ -6,6 +6,7 @@ Accounts.onCreateUser(function(options, user){
 	user.profile.battleNetId = "";
 	user.profile.guilds = [];
 	user.profile.guildOwner = "";
+	user.profile.invites = [];
 
 	return user;
 });

@@ -1,4 +1,6 @@
-import { Session } from 'meteor/session'
+import { Meteor } from 'meteor/meteor';
+
+import { Session } from 'meteor/session';
 
 Template.chat.helpers({
 
@@ -23,5 +25,17 @@ Template.chat.helpers({
 	messages: function(activeGuild){
 		
 		return Chat.find({chatId:activeGuild});
+	},
+
+	invite: function(){
+
+		let user = Meteor.user();
+
+
+		if(user && user.profile && user.profile.invites && user.profile.invites[0])
+			return [Meteor.user().profile.invites[0]];
+
+		else 
+			return [];
 	}
 });

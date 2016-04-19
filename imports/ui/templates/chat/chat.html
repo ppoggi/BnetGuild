@@ -5,7 +5,31 @@
       	<div class="row">      	
       		<div class="col-md-12">
 				<div class="info chat">
-					<div id="chat-div">  						
+					<div id="chat-div"> 
+
+					
+						{{#each invite}}
+							<div class="info" style="opacity: .85; transform: translate3d(0px, 0px, 0px); background-color:#222; position:absolute; right:0px; width:300px">
+					        <div>
+					          <div class="container youplay-user">					                          
+					            <div class="user-data">
+					              <h2>{{guildName}}</h2>					              
+					              <div class="activity" style='position:absolute;top:0px;left:40px'>
+					                <div>
+					                  <div class="num">{{noUsers}}</div>
+					                  <div class="title">Members</div>
+					                </div>					               
+					              </div>
+					            </div>
+					          </div>
+					          <div class="container mt-20" style='position:absolute; bottom:1px; left:-10px;'>
+					            <a id="accept-invite" class="btn btn-sm btn-default ml-0">Accept</a>
+					            <a id="decline-invite" class="btn btn-sm btn-default">Decline</a>
+					          </div>
+					        </div>
+					      </div>
+					      {{/each}}
+					
 						<ul class="block-content">							
 							<li>Guild Message Of the Day:<a href="#!"></a></li>
 							
@@ -25,11 +49,6 @@
 		          	{{#each guilds}}
 		            	<li class="active"><a href="user-activity.html">{{guildName}}</a></li>
 		            {{/each}}
-<!-- 		            <li><a href="user-profile.html">Profile</a>
-		            </li>
-		            <li class="active"><a href="user-messages.html">Messages <span class="badge">6</span></a>
-		            </li>
-		            <li><a href="user-settings.html">Settings</a> </li> -->
 		          </ul>
 		        </div>
 		      </div>
@@ -38,7 +57,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="youplay-input">
-					<form>
+					<form id='chat-input'>
 						<input type="text" placeholder="Enter message..." name="chatInput">
 						<button class="btn btn-default text-send-button" type='submit'>Send</button>
 					</form>

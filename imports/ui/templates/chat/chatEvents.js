@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 
 Template.chat.events({
 	
-	'submit form' : function(e){
+	'submit #chat-input' : function(e){
 		e.preventDefault();
 		
 		let username = Meteor.user().username;
@@ -29,5 +29,23 @@ Template.chat.events({
 		
 		Meteor.call('submitChatMessage', obj);								
 		
+	},
+
+	'click #accept-invite':function(e){
+		e.preventDefault();
+
+		Meteor.call('acceptGuildInvite', this, function(err, message){
+			if(err)
+				console.log(err)
+			if(message)
+				console.log(message)
+		});
+
+	},
+
+	'click #decline-invite':function(e){
+		e.preventDefault();
+
+		Meteor.call('declineGuildInvite', this);
 	}
 });
