@@ -19,6 +19,8 @@ Template.chat.onCreated(function(){
 				Meteor.subscribe('guilds', guilds[i].guildId);
 
 				Meteor.subscribe('chat', guilds[i].guildId);
+
+				Meteor.subscribe('messageBoard');
 			}	
 		}
 

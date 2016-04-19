@@ -1,3 +1,3 @@
 Guilds = new Mongo.Collection("guilds");
 
-GatheringHall = new Mongo.Collection("gatheringHall");
+MessageBoard = new Mongo.Collection("messageBoard");

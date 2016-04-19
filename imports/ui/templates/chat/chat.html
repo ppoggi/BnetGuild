@@ -31,7 +31,7 @@
 					      {{/each}}
 					
 						<ul class="block-content">							
-							<li>Guild Message Of the Day:<a href="#!"></a></li>
+							<li>Guild Message Of the Day:{{messageOfTheDay}}</li>
 							
 							{{#each messages activeGuild}}
 								<li><a href="#!">{{user}} {{time}}</a>{{message}}</li>
@@ -47,7 +47,7 @@
 		        <div class="container">
 		          <ul>
 		          	{{#each guilds}}
-		            	<li class="active"><a href="user-activity.html">{{guildName}}</a></li>
+		            	<li class='guild-list-item {{#if isActive this}} active {{/if}}'><a href="user-activity.html">{{guildName}}</a></li>
 		            {{/each}}
 		          </ul>
 		        </div>

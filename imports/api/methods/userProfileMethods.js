@@ -11,51 +11,42 @@ Meteor.methods({
 			throw new Meteor.Error('Cannot create more than 1 guild', 'Too many guilds');
 
 
+		let guildCheck = Guilds.findOne({guildName:guildName});
+
+		console.log(guildCheck)
+
+		if(guildCheck)
+			return {message: "A gulid already exists with that name", color: "yellow"};
+
 		let guild = {};
 
 		guild.guildName     = guildName;
 		guild.master        = user.username;
 		guild.officers      = [];
 		guild.adventurers   = []; 
-		guild.peons         = [];
-		
+		guild.peons         = [];		
 		guild.details       = '';
-
 		guild.messageOfTheDay = "Welcome to "+guildName+"!";
 
+		let guildId = Guilds.insert(guild);		
+		
+		if(!guildId)
+			return {message: "Error Creating Guild", color: "red"};
 
-		let gatheringHall  = {};
+		let selector = {_id:Meteor.user()._id};
+		
+		let action = {$set: {'profile.guildOwner': guildId}, $push:{'profile.guilds':{guildName:guildName, guildId: guildId}}};
 
-		gatheringHall.chat = [];
+		let status = Meteor.users.update(selector, action);
 
-		gatheringHall.master = user.username;
-
-		Guilds.insert(guild, (err, id)=>{
-			if(err){
-				throw new Meteor.Error('Could not create guild', err)
-			}
-
-			gatheringHall.guildId = id;
-
-			GatheringHall.insert(gatheringHall, (err, status)=>{
-
-				if(err)
-					throw new Meteor.Error('Gathering Hall insert', err);
-
-				let selector = {_id:Meteor.user()._id};
-				let action = {$set: {'profile.guildOwner': id}, $push:{'profile.guilds':{guildName:guildName, guildId:id}}}
-
-				Meteor.users.update(selector, action, (err, status)=>{
-
-					if(status !=0)
-						return {message: "Guild Created Succesfully", color: "green"}
-
-				});
-
-			})
-
-		});
-
+		if(status == 1){
+			return {message: "Guild Created Succesfully", color: "green"};
+		}else{
+			
+			Guilds.remove({_id:guildId});
+			return {message: "Error Creating Guild", color: "red"};
+		}
+			
 	},
 
 	editGuildMessage: function(message){

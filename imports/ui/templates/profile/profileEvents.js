@@ -11,7 +11,15 @@ Template.userProfile.events({
 
 		$('#create-guild-input').val("")
 
-		Meteor.call('createGuild', guildName);
+		Meteor.call('createGuild', guildName, function(err, message){
+
+			if(err)
+				console.log(err)
+
+			if(message)
+				console.log(message)
+
+		});
 
 	},
 

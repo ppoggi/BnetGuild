@@ -37,5 +37,25 @@ Template.chat.helpers({
 
 		else 
 			return [];
+	},
+
+	isActive: function(guild){
+
+		if(guild._id != Session.get('activeGuild'))
+			return false;
+		else
+			return true;
+	},
+
+	messageOfTheDay: function(){
+
+		let currentGuild = Session.get('activeGuild');
+
+		let guild = Guilds.findOne({_id:currentGuild});
+
+		if(!guild)
+			return;
+
+		return guild.messageOfTheDay;
 	}
 });

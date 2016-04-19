@@ -47,5 +47,10 @@ Template.chat.events({
 		e.preventDefault();
 
 		Meteor.call('declineGuildInvite', this);
+	},
+
+	'click .guild-list-item':function(e){
+		e.preventDefault();
+		Session.set('activeGuild', this._id);
 	}
 });
