@@ -1,0 +1,39 @@
+/* CSS declarations go here */
+li {
+    list-style-type: none;
+}
+
+.text-send-button{
+	position:absolute;
+	right:-9px;
+	top:0px;
+}
+
+#chatbox{
+	margin-top:80px;
+	background-color:black;
+}
+
+.youplay-input{
+	height:40px;
+}
+
+#chat-div{
+	position: relative;
+	min-height: 400px;
+	max-height: 400px;	
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.manage-bar{
+	margin-top:46px;
+}
+
+
+.top-container{
+	margin-top:80px;
+}
+
+.top-row{
+	margin-top:20px;
+}

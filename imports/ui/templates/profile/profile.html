@@ -1,0 +1,82 @@
+<template name="userProfile">
+<div class="container top-container">
+<div class="row top-row">
+<div class="col-md-9">
+
+          <h3 class="mt-0 mb-20">John Doe</h3>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td style="width: 200px;">
+                  <p>Hometown</p>
+                </td>
+                <td>
+                  <p><a href="#">New York</a>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Relationship status</p>
+                </td>
+                <td>
+                  <p><a href="#">Married</a>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Studied at</p>
+                </td>
+                <td>
+                  <p><a href="#">New York University, NYU</a>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Languages</p>
+                </td>
+                <td>
+                  <p><a href="#">English</a>, <a href="#">Japan</a>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {{#unless isGM}}
+            <h3 class="mt-40 mb-20">Create a Guild</h3>
+            <div class="comment-cont clearfix">
+                <div class="youplay-input">
+                  <input id="create-guild-input" type="text" name="username" placeholder="Guild Name">
+                </div>
+                <button id="create-guild-button" class="btn btn-default pull-right">Submit</button>
+            </div>
+
+          {{else}}
+
+            <h3 class="mt-40 mb-20">Enter Message of the Day</h3>
+              <form action="">
+              <div class="youplay-textarea">
+                <textarea placeholder="{{messageOfTheDay}}" name="message" rows="5"></textarea>
+              </div>
+              <button class="btn btn-default">Save</button>
+            </form> 
+
+
+            <h3 class="mt-40 mb-20">Enter Guild Details</h3>
+              <form>            
+              <div class="youplay-textarea">
+                <textarea placeholder="Message" name="message" rows="5"></textarea>
+              </div>
+              <button class="btn btn-default">Save</button>
+            </form>       
+          {{/unless}}
+
+
+        </div>
+    </div>
+</div>
+
+</template>

@@ -1,0 +1,109 @@
+/*------------------------------------------------------------------
+
+  Comments / Reviews
+
+-------------------------------------------------------------------*/
+.comments-block,
+.reviews-block {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+
+    // user avatar
+    .comment-avatar ,
+    .review-avatar{
+        width: 70px;
+        display: block;
+        transform: skew(-$skew_size);
+        transform-origin: 50% 50%;
+        margin-right: 3rem;
+        background: $back_color;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        cursor: pointer;
+
+        > img {
+            width: 100%;
+            transform: skew($skew_size) scale(1.15);
+            transition: .3s opacity ease;
+            -webkit-backface-visibility: hidden;
+            opacity: 1;
+        }
+        &:hover > img {
+            opacity: $images_hover_opacity;
+        }
+    }
+
+    // comment form
+    .comment-form,
+    .review-form {
+        margin: 3rem 0;
+    }
+
+    // comment container
+    .comment-cont,
+    .review-cont {
+        position: relative;
+        margin-left: 100px;
+    }
+
+    // comments-list
+    .comments-list,
+    .comments-list .child-comment,
+    .reviews-list,
+    .reviews-list .child-comment {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        > li > article {
+            margin-bottom: 2.5rem;
+        }
+
+        .date {
+            color: $text_mute_color;
+            font-size: 1.2rem;
+        }
+    }
+    .comments-list .child-comment,
+    .reviews-list .child-review {
+        margin-left: 100px;
+        @media #{$media-xs} {
+            margin-left: 50px;
+        }
+    }
+    .comments-list,
+    .reviews-list {
+        margin: 3rem 0;
+    }
+
+    // comment text
+    .comment-text,
+    .review-text {
+        margin: 1rem 0;
+    }
+
+    // ratings
+    .rating {
+        margin-top: 0.3rem;
+    }
+
+    // like
+    .review-like,
+    .comment-like {
+        position: relative;
+        opacity: 0.5;
+        transition: .3s opacity ease;
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+    }
+    .comment-cont:hover,
+    .review-cont:hover {
+        .review-like,
+        .comment-like {
+            opacity: 1;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+<template name="chat">
+	<div id="chatbox">
+      <div class="container">
+      	{{#if Template.subscriptionsReady}}
+      	<div class="row">      	
+      		<div class="col-md-12">
+				<div class="info chat">
+					<div id="chat-div">  						
+						<ul class="block-content">							
+							<li>Guild Message Of the Day:<a href="#!"></a></li>
+							
+							{{#each messages activeGuild}}
+								<li><a href="#!">{{user}} {{time}}</a>{{message}}</li>
+							{{/each}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div class="row manage-bar">
+			<div class="col-md-12">
+		      <div class="youplay-user-navigation">
+		        <div class="container">
+		          <ul>
+		          	{{#each guilds}}
+		            	<li class="active"><a href="user-activity.html">{{guildName}}</a></li>
+		            {{/each}}
+<!-- 		            <li><a href="user-profile.html">Profile</a>
+		            </li>
+		            <li class="active"><a href="user-messages.html">Messages <span class="badge">6</span></a>
+		            </li>
+		            <li><a href="user-settings.html">Settings</a> </li> -->
+		          </ul>
+		        </div>
+		      </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="youplay-input">
+					<form>
+						<input type="text" placeholder="Enter message..." name="chatInput">
+						<button class="btn btn-default text-send-button" type='submit'>Send</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		{{else}}
+		<div class="row">
+			  <div class="page-preloader preloader-wrapp">
+	    		<img src="assets/images/logo.png" alt="">
+	    		<div class="preloader"></div>
+	  		</div>
+  		</div>
+		{{/if}}
+	</div>
+	</div>
+
+	{{>dashboardContent}}
+</template>

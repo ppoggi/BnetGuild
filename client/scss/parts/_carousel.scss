@@ -1,0 +1,115 @@
+/*------------------------------------------------------------------
+
+  Owl Carousel
+
+-------------------------------------------------------------------*/
+.youplay-carousel {
+    // remove space between items
+    .angled-img {
+        margin-left: -1px;
+        
+        .bottom-info {
+            width: 80%;
+        }
+    }
+
+    // controls
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        cursor: pointer;
+        font-size: 2rem;
+        top: 0;
+        height: 100%;
+        width: 70px;
+        transition: .3s opacity ease;
+        opacity: 1;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .owl-prev {
+        background: linear-gradient(to right, $back_darken_color, rgba($back_darken_color, 0));
+    }
+    .owl-next {
+        // no use 0px - added 1px transparent gap
+        right: -0.1px;
+        background: linear-gradient(to left, $back_darken_color, rgba($back_darken_color, 0));
+    }
+}
+
+
+/*------------------------------------------------------------------
+
+  Default Owl Carousel
+
+-------------------------------------------------------------------*/
+.owl-carousel {
+    .owl-dots {
+        text-align: center;
+        margin-right: 0;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    .owl-dot {
+        display: inline-block;
+        width: 40px;
+        height: 8px;
+        margin-left: 15px;
+        margin-top: 5px;
+        transform: skew(-$skew_size);
+        border: 2px solid $text_color;
+        transition: .3s background ease;
+
+        &:hover,
+        &.active {
+            background: $text_color;
+        }
+    }
+}
+
+
+/*------------------------------------------------------------------
+
+  Owl Slider
+
+-------------------------------------------------------------------*/
+.youplay-slider {
+    @include cssShape;
+    .angled-img {
+        @include cssShapeRemove;
+    }
+    
+    // skew for slider wraper
+    > .owl-stage-outer {
+        transform: skew(-$skew_size);
+        .owl-item {
+            transform: skew($skew_size);
+        }
+    }
+
+    .owl-dots {
+        text-align: center;
+        margin-right: 15%;
+        margin-top: -5px;
+        margin-bottom: 5px;
+    }
+
+    .owl-dot {
+        display: inline-block;
+        width: 40px;
+        height: 8px;
+        margin-left: 15px;
+        margin-top: 5px;
+        transform: skew(-$skew_size);
+        border: 2px solid $text_color;
+        transition: .3s background ease;
+
+        &:hover,
+        &.active {
+            background: $text_color;
+        }
+    }
+}
