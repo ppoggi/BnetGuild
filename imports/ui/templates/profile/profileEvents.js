@@ -1,3 +1,5 @@
+import { Meteor } from 'meteor/meteor';
+
 Template.userProfile.events({
 	'click #create-guild-button': function(e){
 		e.stopImmediatePropagation();
@@ -10,6 +12,29 @@ Template.userProfile.events({
 		$('#create-guild-input').val("")
 
 		Meteor.call('createGuild', guildName);
+
+	},
+
+	'submit #edit-gmotd': function(e){
+		e.preventDefault();
+
+		let message = e.target.message.value;
+
+		e.target.message.value = '';
+
+		Meteor.call('editGuildMessage', message);
+	},
+
+	'submit #edit-guild-details':function(e){
+
+		e.preventDefault();
+
+		let message = e.target.message.value
+
+		e.target.message.value = '';
+
+		Meteor.call('editGuildDetails', message);
+
 
 	}
 })

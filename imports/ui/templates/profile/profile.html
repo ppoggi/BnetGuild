@@ -56,21 +56,21 @@
 
           {{else}}
 
-            <h3 class="mt-40 mb-20">Enter Message of the Day</h3>
-              <form action="">
+            <h3 class="mt-40 mb-20">Edit Message of the Day</h3>
+              <form id="edit-gmotd">
               <div class="youplay-textarea">
                 <textarea placeholder="{{messageOfTheDay}}" name="message" rows="5"></textarea>
               </div>
-              <button class="btn btn-default">Save</button>
+              <button class="btn btn-default" type="submit">Save</button>
             </form> 
 
 
-            <h3 class="mt-40 mb-20">Enter Guild Details</h3>
-              <form>            
+            <h3 class="mt-40 mb-20">Edit Guild Details</h3>
+              <form id="edit-guild-details">            
               <div class="youplay-textarea">
-                <textarea placeholder="Message" name="message" rows="5"></textarea>
+                <textarea placeholder="{{guildDetails}}" name="message" rows="5"></textarea>
               </div>
-              <button class="btn btn-default">Save</button>
+              <button class="btn btn-default" type='submit'>Save</button>
             </form>       
           {{/unless}}
 

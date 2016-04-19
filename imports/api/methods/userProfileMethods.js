@@ -18,7 +18,8 @@ Meteor.methods({
 		guild.officers      = [];
 		guild.adventurers   = []; 
 		guild.peons         = [];
-		guild.details       = [];
+		
+		guild.details       = '';
 
 		guild.messageOfTheDay = "Welcome to "+guildName+"!";
 
@@ -28,8 +29,6 @@ Meteor.methods({
 		gatheringHall.chat = [];
 
 		gatheringHall.master = user.username;
-
-
 
 		Guilds.insert(guild, (err, id)=>{
 			if(err){
@@ -59,7 +58,7 @@ Meteor.methods({
 
 	},
 
-	editGuilMessage: function(message){
+	editGuildMessage: function(message){
 
 		let user = Meteor.user();
 
@@ -69,7 +68,19 @@ Meteor.methods({
 		Guilds.update({_id: user.profile.guildOwner}, {$set: {messageOfTheDay: message}}, function(err){
 			if(err)
 				throw new Error(err);
-		})
-	}
+		});
+	},
 
+	editGuildDetails: function(message){
+
+		let user = Meteor.user();
+
+		if(!user)
+			throw new Meteor.Error('Must be logged in');
+
+		Guilds.update({_id: user.profile.guildOwner}, {$set: {details: message}}, function(err){
+			if(err)
+				throw new Error(err);
+		});
+	}
 });
