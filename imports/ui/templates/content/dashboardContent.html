@@ -173,6 +173,22 @@
             </div>
           </div>
         </div>
+
+
+        <div class="col-md-3">
+          <div class="side-block">
+            <h4 class="block-title">Members</h4><span id="display-guild-members" class="fa fa-toggle-off fa-2x pull-right"></span>
+            <div id="guild-member-list" class="block-content hidden">
+              <ul>
+              {{#each guildMembers}}
+                <li>{{rank}}:{{name}}</li>
+              {{/each}}
+            </ul>
+            </div>
+          </div>
+        </div>
+
+
         <!-- Left Side -->
 
       </div>

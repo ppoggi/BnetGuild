@@ -40,6 +40,21 @@ Template.dashboardContent.events({
 		}
 	},
 
+	'click #display-guild-members': function(e){
+		e.preventDefault();
+		
+		if($('#guild-member-list').hasClass('hidden')){
+
+			$('#guild-member-list').removeClass('hidden');
+			$('#display-guild-members').removeClass('fa-toggle-off').addClass('fa-toggle-on');
+
+		}else{
+
+			$('#guild-member-list').addClass('hidden');
+			$('#display-guild-members').removeClass('fa-toggle-on').addClass('fa-toggle-off');
+		}
+	},
+
 	'submit #message-board-form': function(e){
 		e.preventDefault();
 

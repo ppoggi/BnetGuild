@@ -40,6 +40,10 @@ Meteor.methods({
 		let status = Meteor.users.update(selector, action);
 
 		if(status == 1){
+
+			// MessageBoard.insert({});
+
+
 			return {message: "Guild Created Succesfully", color: "green"};
 		}else{
 			
