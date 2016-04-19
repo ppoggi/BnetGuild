@@ -43,6 +43,9 @@ Meteor.methods({
 		if(!user)
 			throw new Meteor.Error('Must Be logged in');
 
+		if(user.profile.guilds.length > 5)
+			return {message: 'You can only be in 5 guilds', color: 'yellow'}
+
 
 		let status = Meteor.users.update(user, { $pull: {'profile.invites': invite}, $push: {'profile.guilds': {guildName:invite.guildName, guildId:invite.guildId}}});
 
