@@ -12,5 +12,15 @@ Template.dashboardContent.helpers({
 			return;
 
 		return guild.details;
+	},
+
+	message: function(){
+
+		let currentGuild = Session.get('activeGuild');
+
+		let messages = MessageBoard.find({guildId:currentGuild, active:true});
+
+		return messages;
 	}
+
 });

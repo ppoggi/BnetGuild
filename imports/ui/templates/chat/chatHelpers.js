@@ -11,15 +11,24 @@ Template.chat.helpers({
 		if(!guilds[0])
 			return;
 
-		if(!Session.get('activeGuild'))
-			Session.set('activeGuild', guilds[0]._id)
+		if(!Session.get('activeGuild')){
+
+
+			Session.set('activeGuild', guilds[0]._id)			
+		}
+			
 		
 		return guilds;
 	},
 
 	activeGuild: function(){
 
-		return Session.get('activeGuild');
+		let guild =  Session.get('activeGuild');
+
+		if(guild)
+			Meteor.subscribe('messageBoard', guild);
+
+		return guild;
 	},
 
 	messages: function(activeGuild){

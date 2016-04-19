@@ -64,5 +64,28 @@ Meteor.methods({
 			throw new Meteor.Error('Must Be logged in');
 
 		let status = Meteor.users.update(user, { $pull: {'profile.invites': invite}});
+	}, 
+
+	writeToBoard: function(message){
+
+		let user = Meteor.user();
+
+		if(!user)
+			throw new Meteor.Error('Must Be logged in');
+
+		let guild = Guilds.findOne({_id:message.guildId});
+	
+		if(!guild)
+			throw new Meteor.Error('This is not a valid guild');	
+
+		if( (guild.master != user.username) && ( _.indexOf(guild.officers, user.username) == -1))
+			throw new Meteor.Error('Must be GM or an officer to post');	
+
+		message = _.extend(message, _.pick(user, 'username'));
+		
+		MessageBoard.insert(message, function(err, id){
+			if(err)
+				throw new Error(err)			
+		});
 	}
 });

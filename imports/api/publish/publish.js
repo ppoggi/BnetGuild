@@ -12,9 +12,9 @@ Meteor.publish('guilds',function(guildId){
 Meteor.publish( 'messageBoard', function(guildId){
 
 	if(!guildId || guildId == '' )
-		return;
+		return;	
 
-	let messageBoard = messageBoard.find({guildId: guildId});
+	let messageBoard = MessageBoard.find({guildId: guildId, active:true});
 
 	return messageBoard;
 });
