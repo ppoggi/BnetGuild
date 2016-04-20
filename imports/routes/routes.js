@@ -5,7 +5,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 FlowRouter.route('/', {
     action: function(params) {
     	
-    BlazeLayout.render("mainLayout", {content:"chat"});
+    	BlazeLayout.render("mainLayout", {content:"chat"});
 
     }    
 });
@@ -15,7 +15,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/profile', {
     action: function(params) {
 
-    BlazeLayout.render("mainLayout", {content:"userProfile"});
+    	BlazeLayout.render("mainLayout", {content:"userProfile"});
 
     }    
 });

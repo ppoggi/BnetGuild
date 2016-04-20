@@ -11,9 +11,7 @@ Meteor.methods({
 			throw new Meteor.Error('Cannot create more than 1 guild', 'Too many guilds');
 
 
-		let guildCheck = Guilds.findOne({guildName:guildName});
-
-		console.log(guildCheck)
+		let guildCheck = Guilds.findOne({guildName:guildName});		
 
 		if(guildCheck)
 			return {message: "A gulid already exists with that name", color: "yellow"};
@@ -40,17 +38,26 @@ Meteor.methods({
 		let status = Meteor.users.update(selector, action);
 
 		if(status == 1){
+				
+		
+			message = {
 
-			// MessageBoard.insert({});
+				username  : 'Bnet Admin',
+				guildId   : guildId,
+				subject   : 'Welcome to Bnet Guild!',
+				message   : 'Thanks for using Bnet Guild!',				
+				active    : true
+			}
 
+			MessageBoard.insert(message);
 
 			return {message: "Guild Created Succesfully", color: "green"};
+		
 		}else{
 			
 			Guilds.remove({_id:guildId});
 			return {message: "Error Creating Guild", color: "red"};
 		}
-			
 	},
 
 	editGuildMessage: function(message){

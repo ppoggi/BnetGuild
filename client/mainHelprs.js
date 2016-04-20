@@ -5,5 +5,15 @@ Template.mainLayout.helpers({
 			return "Sign In"
 		else 
 			return Meteor.user().username;
+	},
+
+	user: function(){
+
+		return !! Meteor.user();
+	},
+
+	authInProgress: function(){
+
+		return Meteor.loggingIn();
 	}
 });
