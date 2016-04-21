@@ -51,6 +51,11 @@ Template.dashboardContent.helpers({
 		
 		return guildMembers;
 
-	}
+	},
+	hasGuild: function(){
+
+		return !!Session.get('activeGuild');	
+	},
+
 
 });

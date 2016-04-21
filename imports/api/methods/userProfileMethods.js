@@ -18,12 +18,13 @@ Meteor.methods({
 
 		let guild = {};
 
-		guild.guildName     = guildName;
-		guild.master        = user.username;
-		guild.officers      = [];
-		guild.adventurers   = []; 
-		guild.peons         = [];		
-		guild.details       = '';
+		guild.guildName       = guildName;
+		guild.master          = user.username;
+		guild.officers        = [];
+		guild.adventurers     = []; 
+		guild.peons           = [];		
+		guild.details         = '';
+		guild.online          = [];
 		guild.messageOfTheDay = "Welcome to "+guildName+"!";
 
 		let guildId = Guilds.insert(guild);		
